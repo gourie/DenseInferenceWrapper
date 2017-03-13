@@ -22,7 +22,7 @@ dense_inference.so: dense_inference.o libDenseCRF.a
 	$(CC) -shared -I/opt/software/lib/anaconda27/include/python2.7 -Wl,-no-undefined -o dense_inference.so dense_inference.o -lpython2.7 -lboost_python -L. -lDenseCRF $(CFLAGS)
 	
 dense_inference.o: refine_3d/dense_inference.cpp refine_3d/dense_inference.h libDenseCRF.a
-	$(CC) -c -fPIC -I/opt/software/lib/anaconda27/include/python2.7 refine_3d/dense_inference.cpp -o dense_inference.o $(CFLAGS) -lDenseCRF $(CFLAGS)
+	$(CC) -c -fPIC -I/opt/software/lib/anaconda27/include/python2.7 -I/opt/software/lib/anaconda27/lib/python2.7/site-packages/numpy/core/include refine_3d/dense_inference.cpp -o dense_inference.o $(CFLAGS) -lDenseCRF $(CFLAGS)
 	
 python: dense_inference.o dense_inference.so libDenseCRF.a
 
